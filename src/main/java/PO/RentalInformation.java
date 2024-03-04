@@ -5,8 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static java.awt.Color.BLACK;
+import java.awt.*;
 
+import static java.awt.Color.*;
 import static org.openqa.selenium.support.Colors.GREY;
 
 public class RentalInformation {
@@ -55,7 +56,14 @@ public class RentalInformation {
         new WebDriverWait( driver, 10).until( ExpectedConditions.elementToBeClickable( By.className( "Dropdown-menu" ) ) ).click();
         return this;
     }
-
+    public RentalInformation choiceColour(Color Colour) {
+        if (Colour.equals(BLACK)) {
+            driver.findElement(colourBlack).click();
+        } else if (Colour.equals(GRAY)) {
+            driver.findElement(colourGrey).click();
+        }
+        return this;
+    }
 
     public RentalInformation fieldComment(String newComment) {
         driver.findElement( commentForCourier ).sendKeys( newComment );

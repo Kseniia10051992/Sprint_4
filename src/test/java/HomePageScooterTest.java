@@ -8,7 +8,7 @@ import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 
 import static Constants.QuestionsImportant.*;
@@ -36,12 +36,12 @@ public class HomePageScooterTest {
             return new Object[][]{
                     {QUESTION_1, ANSWER_1, ITEM_ANSWER_1, TEXT_ANSWER_1},
                     {QUESTION_2, ANSWER_2, ITEM_ANSWER_2, TEXT_ANSWER_2},
-                    {QUESTION_3, ANSWER_3, ITEM_ANSWER_2, TEXT_ANSWER_3},
-                    {QUESTION_4, ANSWER_4, ITEM_ANSWER_3, TEXT_ANSWER_4},
-                    {QUESTION_5, ANSWER_5, ITEM_ANSWER_4, TEXT_ANSWER_5},
-                    {QUESTION_6, ANSWER_6, ITEM_ANSWER_5, TEXT_ANSWER_6},
-                    {QUESTION_7, ANSWER_7, ITEM_ANSWER_6, TEXT_ANSWER_7},
-                    {QUESTION_8, ANSWER_8, ITEM_ANSWER_7, TEXT_ANSWER_8},
+                    {QUESTION_3, ANSWER_3, ITEM_ANSWER_3, TEXT_ANSWER_3},
+                    {QUESTION_4, ANSWER_4, ITEM_ANSWER_4, TEXT_ANSWER_4},
+                    {QUESTION_5, ANSWER_5, ITEM_ANSWER_5, TEXT_ANSWER_5},
+                    {QUESTION_6, ANSWER_6, ITEM_ANSWER_6, TEXT_ANSWER_6},
+                    {QUESTION_7, ANSWER_7, ITEM_ANSWER_7, TEXT_ANSWER_7},
+                    {QUESTION_8, ANSWER_8, ITEM_ANSWER_8, TEXT_ANSWER_8},
             };
         }
 
