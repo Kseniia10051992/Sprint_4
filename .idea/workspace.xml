@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b43da81-3334-495e-a54e-806504127a09" name="Changes" comment="project">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Constants/ColourScooter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Constants/QuestionsImportant.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Constants/ОrderButton.java" beforeDir="false" />
+    <list default="true" id="9b43da81-3334-495e-a54e-806504127a09" name="Changes" comment="first commit">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/сonstants/RentalPeriod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/CreateOrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CreateOrderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/HomePageScooterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/HomePageScooterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/StartAndFinish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StartAndFinish.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +32,7 @@
       </GitPushTagMode>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -58,32 +59,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.CreateOrderTest.CreateOrderWithTopButton.executor": "Run",
-    "JUnit.CreateOrderTest.clickTopOrderButton.executor": "Run",
-    "JUnit.CreateOrderTest.executor": "Run",
-    "JUnit.CreateOrderTest.testBottomButtonOrder.executor": "Run",
-    "JUnit.CreateOrderTest.testButtonOrder.executor": "Run",
-    "JUnit.CreateOrderTest.testClickOrderButton.executor": "Run",
-    "JUnit.CreateOrderTest.testClickTopOrderButton.executor": "Run",
-    "JUnit.CreateOrderTest.testCreateOrderWithTopButton.executor": "Run",
-    "JUnit.CreateOrderTest.testTopButtonOrder.executor": "Run",
-    "JUnit.HomePageScooterTest.checkQuestions.executor": "Run",
-    "JUnit.HomePageScooterTest.executor": "Run",
-    "JUnit.HomePageScooterTestTWo.clickBottomOrderButton.executor": "Run",
-    "JUnit.HomePageScooterTestTWo.clickCreateOrderButton.executor": "Run",
-    "JUnit.HomePageScooterTestTWo.clickTopOrderButton.executor": "Run",
-    "JUnit.HomePageScooterTestTWo.testCreateOrderWithTopButton.executor": "Run",
-    "JUnit.HomePageScooterTestTWo.testCreateOrderWithUpButton.executor": "Run",
-    "JUnit.HomePageScooterTestTWo.testHomePageScooterTestTWo.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Rebasing develop",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/kseny/Sprint_4"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.CreateOrderTest.CreateOrderWithTopButton.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CreateOrderTest.clickTopOrderButton.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CreateOrderTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CreateOrderTest.testBottomButtonOrder.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CreateOrderTest.testButtonOrder.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CreateOrderTest.testClickOrderButton.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CreateOrderTest.testClickTopOrderButton.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CreateOrderTest.testCreateOrderWithTopButton.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CreateOrderTest.testTopButtonOrder.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.HomePageScooterTest.checkQuestions.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.HomePageScooterTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.HomePageScooterTestTWo.clickBottomOrderButton.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.HomePageScooterTestTWo.clickCreateOrderButton.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.HomePageScooterTestTWo.clickTopOrderButton.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.HomePageScooterTestTWo.testCreateOrderWithTopButton.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.HomePageScooterTestTWo.testCreateOrderWithUpButton.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.HomePageScooterTestTWo.testHomePageScooterTestTWo.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Rebasing develop&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kseny/Sprint_4&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="JUnit.CreateOrderTest.testButtonOrder">
     <configuration name="CreateOrderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Sprint__4" />
@@ -220,7 +221,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709814090926</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="first commit">
+      <option name="closed" value="true" />
+      <created>1709824586406</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1709824586406</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -247,16 +256,17 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="project" />
     <MESSAGE value="Revert &quot;project&quot;&#10;&#10;This reverts commit 3a398352" />
-    <option name="LAST_COMMIT_MESSAGE" value="Revert &quot;project&quot;&#10;&#10;This reverts commit 3a398352" />
+    <MESSAGE value="project" />
+    <MESSAGE value="first commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/CreateOrderTest.java</url>
-          <line>73</line>
+          <line>76</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

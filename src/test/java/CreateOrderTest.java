@@ -1,7 +1,3 @@
-import PO.CustomerInformation;
-import PO.HomePageScooter;
-import PO.OrderRegistrationWindow;
-import PO.RentalInformation;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,15 +6,19 @@ import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import po.CustomerInformation;
+import po.HomePageScooter;
+import po.OrderRegistrationWindow;
+import po.RentalInformation;
 
 import static java.awt.Color.black;
-import static java.awt.Color.gray;
 import static org.junit.Assert.assertTrue;
-import static сonstants.ColourScooter.BLACK;
-import static сonstants.ColourScooter.GREY;
-import static сonstants.RentPeriod.*;
+import static org.openqa.selenium.support.Colors.BLACK;
+import static org.openqa.selenium.support.Colors.GREY;
+import static сonstants.RentalPeriod.*;
 import static сonstants.ОrderButton.BOTTOM_BUTTON;
 import static сonstants.ОrderButton.TOP_BUTTON;
+
 
 @RunWith(Parameterized.class)
 public class CreateOrderTest extends StartAndFinish {
@@ -26,43 +26,46 @@ public class CreateOrderTest extends StartAndFinish {
     private final String name;
     private final String surname;
     private final String address;
-    private final int metroNumber;
+    private final int stateMetro;
     private final String phoneNumber;
     private final String date;
     private final String period;
     private final String colour;
     private final String comment;
-    private final String textOrder  = "Заказ оформлен";
+    private final String textOrder = "Заказ оформлен";
     private final String button;
 
-    public CreateOrderTest(String button, String name, String surname, String address, int metroNumber, String phoneNumber,
+    public CreateOrderTest(String button, String name, String surname, String address, int stateMetro, String phoneNumber,
                            String date, String period, String colour, String comment) {
         this.button = button;
         this.name = name;
         this.surname = surname;
         this.address = address;
-        this.metroNumber = metroNumber;
+        this.stateMetro = stateMetro;
         this.phoneNumber = phoneNumber;
         this.date = date;
         this.period = period;
         this.colour = colour;
         this.comment = comment;
+
     }
 
     @Parameterized.Parameters
-    public static Object[][] getParametersTest() {
+    public static Object[][] getParameters() {
         return new Object[][]{
-                {TOP_BUTTON, "Иван", "Иванов", "улица Мира", 77, "+79500203465", "15.03.2024", ONE_DAY, GREY, "Нет комментариев"},
-                {TOP_BUTTON, "Ксения", "Сидорова", "улица Ясная", 123, "+79604567645", "12.03.2024", SEVEN_DAYS, BLACK, "Есть комментарий"},
-                {BOTTOM_BUTTON, "Анна", "Иванова", "улица Ленина", 22, "+79305679878", "17.03.2024", FOUR_DAYS, BLACK, "Прошу позвонить заранее"},
-                {BOTTOM_BUTTON, "Семен", "Курочкин", "улица Спортивная", 7, "+79656785434", "10.03.2024", TWO_DAYS, GREY, "Комментария нет"},
+                {TOP_BUTTON, "Ксения", "Иванова", "улица Спортивная", 77, "+79604563452", "14.03.2024", ONE_DAY, "BLACK", "Нет комментариев"},
+                {TOP_BUTTON, "Галина", "Федорова", "улица Лесная", 12, "+79305678909", "10.03.2024", FIVE_DAYS, "GREY", "Просьба позвонить"},
+                {BOTTOM_BUTTON, "Олег", "Сидоров", "улица Ленина", 22, "+79605674356", "20.03.2024", TWO_DAYS, "BLACK", "Есть Комментарий"},
+
+
+
         };
     }
 
     @Override
     public void setUp() {
-        driver = new FirefoxDriver();
-        driver.get( "https://qa-scooter.praktikum-services.ru/" );
+        driver = new ChromeDriver();
+        driver.get("https://qa-scooter.praktikum-services.ru/");
         driver.manage().window().maximize();
     }
 
@@ -71,8 +74,9 @@ public class CreateOrderTest extends StartAndFinish {
         driver.quit();
     }
 
+
     @Test
-    public void testButtonOrder() {
+    public void testClickOrderButton() {
         new HomePageScooter(driver)
                 .waitForLoadHomePageScooter()
                 .clickCreateOrderButton(button);
@@ -82,10 +86,9 @@ public class CreateOrderTest extends StartAndFinish {
                 .fieldName(name)
                 .fieldSurname(surname)
                 .fieldAddress(address)
-                .selectionStateMetro(metroNumber)
+                .selectionStateMetro(stateMetro)
                 .fieldPhone(phoneNumber)
                 .clickNextButton();
-
         new RentalInformation(driver)
                 .waitAboutRentHeader()
                 .whenDate(date)
@@ -94,9 +97,11 @@ public class CreateOrderTest extends StartAndFinish {
                 .fieldComment(comment)
                 .clickFinishOrderButton();
 
-        OrderRegistrationWindow popUpWindow = new OrderRegistrationWindow(driver);
-        popUpWindow.clickButtonYes();
+        OrderRegistrationWindow orderRegistrationWindow = new OrderRegistrationWindow(driver);
+        orderRegistrationWindow.clickButtonYes();
 
-        assertTrue(popUpWindow.getTitleText().contains(textOrder));
+        assertTrue(orderRegistrationWindow.getTitleText().contains(textOrder));
+
+
     }
 }
