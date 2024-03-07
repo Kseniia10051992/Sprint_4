@@ -1,4 +1,4 @@
-package Constants;
+package сonstants;
 
 import org.openqa.selenium.By;
 

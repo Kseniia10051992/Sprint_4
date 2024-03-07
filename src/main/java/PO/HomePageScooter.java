@@ -6,8 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static Constants.ОrderButton.BOTTOM_BUTTON;
-import static Constants.ОrderButton.TOP_BUTTON;
+import static сonstants.ОrderButton.BOTTOM_BUTTON;
+import static сonstants.ОrderButton.TOP_BUTTON;
+
 
 public class HomePageScooter {
     WebDriver driver;
@@ -53,6 +54,15 @@ public class HomePageScooter {
         new WebDriverWait( driver, 10 ).until( driver -> (driver.findElement( accordionLabel ).getText() != null
                 && !driver.findElement( accordionLabel ).getText().isEmpty()
         ) );
+    }
+
+    public void clickCreateOrderButton(String button) {
+        if (button.equals(TOP_BUTTON)) {
+            clickTopOrderButton();
+        } else if (button.equals(BOTTOM_BUTTON)) {
+            scrollToDownOrderButton();
+            clickBottomOrderButton();
+        }
     }
 
     public HomePageScooter clickTopOrderButton() {

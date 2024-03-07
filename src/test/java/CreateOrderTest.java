@@ -5,6 +5,8 @@ import PO.RentalInformation;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -12,84 +14,89 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import static java.awt.Color.black;
 import static java.awt.Color.gray;
 import static org.junit.Assert.assertTrue;
+import static сonstants.ColourScooter.BLACK;
+import static сonstants.ColourScooter.GREY;
+import static сonstants.RentPeriod.*;
+import static сonstants.ОrderButton.BOTTOM_BUTTON;
+import static сonstants.ОrderButton.TOP_BUTTON;
 
+@RunWith(Parameterized.class)
+public class CreateOrderTest extends StartAndFinish {
+    private WebDriver driver;
+    private final String name;
+    private final String surname;
+    private final String address;
+    private final int metroNumber;
+    private final String phoneNumber;
+    private final String date;
+    private final String period;
+    private final String colour;
+    private final String comment;
+    private final String textOrder  = "Заказ оформлен";
+    private final String button;
 
-public class CreateOrderTest {
-    WebDriver driver;
-    public static final String PAGE_URL = "https://qa-scooter.praktikum-services.ru/";
+    public CreateOrderTest(String button, String name, String surname, String address, int metroNumber, String phoneNumber,
+                           String date, String period, String colour, String comment) {
+        this.button = button;
+        this.name = name;
+        this.surname = surname;
+        this.address = address;
+        this.metroNumber = metroNumber;
+        this.phoneNumber = phoneNumber;
+        this.date = date;
+        this.period = period;
+        this.colour = colour;
+        this.comment = comment;
+    }
 
+    @Parameterized.Parameters
+    public static Object[][] getParametersTest() {
+        return new Object[][]{
+                {TOP_BUTTON, "Иван", "Иванов", "улица Мира", 77, "+79500203465", "15.03.2024", ONE_DAY, GREY, "Нет комментариев"},
+                {TOP_BUTTON, "Ксения", "Сидорова", "улица Ясная", 123, "+79604567645", "12.03.2024", SEVEN_DAYS, BLACK, "Есть комментарий"},
+                {BOTTOM_BUTTON, "Анна", "Иванова", "улица Ленина", 22, "+79305679878", "17.03.2024", FOUR_DAYS, BLACK, "Прошу позвонить заранее"},
+                {BOTTOM_BUTTON, "Семен", "Курочкин", "улица Спортивная", 7, "+79656785434", "10.03.2024", TWO_DAYS, GREY, "Комментария нет"},
+        };
+    }
 
-    @Before
+    @Override
     public void setUp() {
-        driver = new ChromeDriver();
-        driver.get( PAGE_URL );
+        driver = new FirefoxDriver();
+        driver.get( "https://qa-scooter.praktikum-services.ru/" );
         driver.manage().window().maximize();
     }
 
-    @After
+    @Override
     public void tearDown() {
         driver.quit();
     }
 
     @Test
-    public void testTopButtonOrder() {
-        HomePageScooter homePageScooter = new HomePageScooter( driver );
-        CustomerInformation customerInformation = new CustomerInformation( driver );
-        RentalInformation rentalInformation = new RentalInformation( driver );
+    public void testButtonOrder() {
+        new HomePageScooter(driver)
+                .waitForLoadHomePageScooter()
+                .clickCreateOrderButton(button);
 
-        homePageScooter.waitForLoadHomePageScooter()
-                .clickTopOrderButton();
-
-        customerInformation.waitForLoadOrderPage()
-                .fieldName( "Анна" )
-                .fieldSurname( "Иванова" )
-                .fieldAddress( "улица Спортивная" )
-                .selectionStateMetro( 22 )
-                .fieldPhone( "+79504321234" )
+        new CustomerInformation(driver)
+                .waitForLoadOrderPage()
+                .fieldName(name)
+                .fieldSurname(surname)
+                .fieldAddress(address)
+                .selectionStateMetro(metroNumber)
+                .fieldPhone(phoneNumber)
                 .clickNextButton();
-        rentalInformation.waitAboutRentHeader()
-                .whenDate( "15.03.2024" )
-                .rentalPeriod( "сутки" )
-                .choiceColour( black )
-                .fieldComment( "Нет комментариев" )
+
+        new RentalInformation(driver)
+                .waitAboutRentHeader()
+                .whenDate(date)
+                .rentalPeriod(period)
+                .choiceColour(colour)
+                .fieldComment(comment)
                 .clickFinishOrderButton();
 
-        OrderRegistrationWindow orderRegistrationWindow = new OrderRegistrationWindow( driver );
-        orderRegistrationWindow.clickButtonYes();
-        assertTrue( orderRegistrationWindow.getTitleText().contains( "Заказ оформлен" ) );
+        OrderRegistrationWindow popUpWindow = new OrderRegistrationWindow(driver);
+        popUpWindow.clickButtonYes();
+
+        assertTrue(popUpWindow.getTitleText().contains(textOrder));
     }
-
-    @Test
-    public void testBottomButtonOrder() {
-        HomePageScooter homePageScooter = new HomePageScooter( driver );
-        CustomerInformation customerInformation = new CustomerInformation( driver );
-        RentalInformation rentalInformation = new RentalInformation( driver );
-
-        homePageScooter.waitForLoadHomePageScooter()
-                .clickTopOrderButton();
-
-        homePageScooter.scrollToDownOrderButton()
-                .scrollToDownOrderButton();
-
-        customerInformation.waitForLoadOrderPage()
-                .fieldName( "Ксения" )
-                .fieldSurname( "Горбунова" )
-                .fieldAddress( "улица Ленина" )
-                .selectionStateMetro( 77 )
-                .fieldPhone( "+79604567654" )
-                .clickNextButton();
-        rentalInformation.waitAboutRentHeader()
-                .whenDate( "10.03.2024" )
-                .rentalPeriod( "двое суток" )
-                .choiceColour( gray )
-                .fieldComment( "Просьба позвонить заранее" )
-                .clickFinishOrderButton();
-
-        OrderRegistrationWindow orderRegistrationWindow = new OrderRegistrationWindow( driver );
-        orderRegistrationWindow.clickButtonYes();
-        assertTrue( orderRegistrationWindow.getTitleText().contains( "Заказ оформлен" ) );
-    }
-
-    }
-
-
+}

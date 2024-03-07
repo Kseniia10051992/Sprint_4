@@ -1,24 +1,16 @@
 import PO.HomePageScooter;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
-
-import static Constants.QuestionsImportant.*;
-import static Constants.QuestionsImportant.TEXT_ANSWER_7;
 import static org.junit.Assert.assertEquals;
+import static сonstants.QuestionsImportant.*;
 
 @RunWith(Parameterized.class)
-public class HomePageScooterTest {
+public class HomePageScooterTest extends StartAndFinish {
         private WebDriver driver;
-        private final String url = "https://qa-scooter.praktikum-services.ru/";
         private final By question;
         private final By answer;
         private final By labelResult;
@@ -45,17 +37,17 @@ public class HomePageScooterTest {
             };
         }
 
-        @Before
+        @Override
         public void setUp(){
-            driver = new ChromeDriver();
-            driver.get( url );
+            driver = new FirefoxDriver();
+            driver.get( "https://qa-scooter.praktikum-services.ru/" );
             driver.manage().window().maximize();
         }
 
-        @After
-        public void teardown() {
-            driver.quit();
-        }
+    @Override
+    public void tearDown() {
+        driver.quit();
+    }
 
         @Test
         public void checkQuestions() {

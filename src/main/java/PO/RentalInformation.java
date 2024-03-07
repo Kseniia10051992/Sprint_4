@@ -56,7 +56,7 @@ public class RentalInformation {
         new WebDriverWait( driver, 10).until( ExpectedConditions.elementToBeClickable( By.className( "Dropdown-menu" ) ) ).click();
         return this;
     }
-    public RentalInformation choiceColour(Color Colour) {
+    public RentalInformation choiceColour(String Colour) {
         if (Colour.equals(BLACK)) {
             driver.findElement(colourBlack).click();
         } else if (Colour.equals(GRAY)) {
