@@ -1,4 +1,4 @@
-package PO;
+package pageobject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -59,7 +59,7 @@ public class RentalInformation {
     public RentalInformation choiceColour(String Colour) {
         if (Colour.equals(BLACK)) {
             driver.findElement(colourBlack).click();
-        } else if (Colour.equals(GRAY)) {
+        } else if (Colour.equals(GREY)) {
             driver.findElement(colourGrey).click();
         }
         return this;
