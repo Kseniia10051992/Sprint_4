@@ -1,13 +1,11 @@
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import pageobject.CustomerInformation;
 import pageobject.HomePageScooter;
 import pageobject.OrderRegistrationWindow;
 import pageobject.RentalInformation;
-
 import static org.junit.Assert.assertTrue;
 import static сonstants.ColourScooter.BLACK;
 import static сonstants.ColourScooter.GREY;
@@ -17,7 +15,7 @@ import static сonstants.ОrderButton.TOP_BUTTON;
 
 @RunWith(Parameterized.class)
 public class CreateOrderTest extends StartAndFinish {
-    private WebDriver driver;
+
     private final String name;
     private final String surname;
     private final String address;
@@ -54,18 +52,6 @@ public class CreateOrderTest extends StartAndFinish {
         };
     }
 
-    @Override
-    public void setUp() {
-        driver = new ChromeDriver();
-        driver.get( "https://qa-scooter.praktikum-services.ru/" );
-        driver.manage().window().maximize();
-    }
-
-    @Override
-    public void tearDown() {
-
-        driver.quit();
-    }
 
     @Test
     public void testClickOrderButton() {
